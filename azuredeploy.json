@@ -176,7 +176,7 @@
       "type": "int"
     },
     "osDiskStorageType": {
-      "defaultValue": "Premium_LRS",
+      "defaultValue": "Standard_LRS",
       "allowedValues": [
         "Premium_LRS",
         "Standard_LRS"
@@ -456,7 +456,7 @@
       "type": "string"
     },
     "appGwSkuName": {
-      "defaultValue": "Standard_v2",
+      "defaultValue": "Standard_Small",
       "allowedValues": [
         "Standard_Small",
         "Standard_Medium",
@@ -934,7 +934,8 @@
         "Microsoft.Resources/deployments/dbTemplate",
         "Microsoft.Resources/deployments/redisTemplate",
         "Microsoft.Resources/deployments/searchTemplate",
-        "Microsoft.Resources/deployments/storageAccountTemplate"
+        "Microsoft.Resources/deployments/storageAccountTemplate",
+        "[concat('Microsoft.Compute/virtualMachines/',concat('vmss-',variables('resourceprefix')))]"
       ],
       "properties": {
         "mode": "Incremental",
