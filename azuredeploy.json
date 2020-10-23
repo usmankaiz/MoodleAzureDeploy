@@ -934,7 +934,7 @@
         "Microsoft.Resources/deployments/dbTemplate",
         "Microsoft.Resources/deployments/redisTemplate",
         "Microsoft.Resources/deployments/searchTemplate",
-        "Microsoft.Resources/deployments/storageAccountTemplate",
+        "Microsoft.Resources/deployments/storageAccountTemplate"
       ],
       "properties": {
         "mode": "Incremental",
