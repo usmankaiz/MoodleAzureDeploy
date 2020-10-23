@@ -1,0 +1,110 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "_artifactsLocation": {
+            "value": "https://raw.githubusercontent.com/QlikIT/Moodle/byoSubnetsSingle/"
+        },
+        "sshPublicKey": {
+            "value": "ssh-rsa xxxxxxxx== rsa-key-20201007"
+        },
+        "moodleVersion": {
+            "value": "MOODLE_39_STABLE"
+        },
+        "httpsTermination": {
+            "value": "AppGw"
+        },
+        "siteURL": {
+            "value": "jay-poc.xxx.com"
+        },
+        "fileServerType": {
+            "value": "nfs-byo"
+        },
+        "nfsByoIpExportPath": {
+            "value": "xxx.20.9.132:/moodletest2"
+        },
+        "htmlLocalCopySwitch": {
+            "value": false
+        },
+        "osDiskStorageType": {
+            "value": "Standard_LRS"
+        },
+        "appGwSslCertKeyVaultResourceId": {
+            "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/IT-Infra-Mgmt-DevTest/providers/Microsoft.KeyVault/vaults/qlikdevtestkeyvault"
+        },
+        "appGwSslCertKeyVaultSecretName": {
+            "value": "xx-xx-xx-Expires-13-Mar-2022"
+        },
+        "appGwSkuName": {
+            "value": "Standard_v2"
+        },
+        "appGwSkuTier": {
+            "value": "Standard_v2"
+        },
+        "customVnetId": {
+            "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/IT-Infra-Mgmt-DevTest/providers/Microsoft.Network/virtualNetworks/IT-Infra-Mgmt-DevTest-Vnet"
+        },
+        "customSubnets": {
+            "value": {
+                "singleSubnetDeploy": true,
+                "subnets": [
+                    {
+                        "name": "DevTest-private",
+                        "addressPrefix": "xxx.20.8.0/25",
+
+                        "metadata": {
+                            "description": "Web Subnet [0]"
+                        }
+                    },
+                    {
+                        "name": "",
+                        "addressPrefix": "",
+                        "nfsHaLbIP": "",
+                        "nfsHaNode0IP": "",
+                        "nfsHaNode1IP": "",
+                        "metadata": {
+                            "description": "San Subnet and Required IPs for NFS-HA deployment [1]"
+                        }
+                    },
+                    {
+                        "name": "",
+                        "addressPrefix": "",
+                        "metadata": {
+                            "description": "Redis Subnet [2]"
+                        }
+                    },
+                    {
+                        "name": "",
+                        "addressPrefix": "",
+                        "metadata": {
+                            "description": "Elastic Subnet [3]"
+                        }
+                    },
+                    {
+                        "name": "",
+                        "addressPrefix": "",
+                        "metadata": {
+                            "description": "Tika Subnet [4]"
+                        }
+                    },
+                    {
+                        "name": "",
+                        "addressPrefix": "",
+                        "metadata": {
+                            "description": "VNet Gateway Subnet [5]"
+                        }
+                    },
+                    {
+                        "name": "DevTest-AppGW",
+                        "addressPrefix": "xxx.20.9.0/26",
+                        "metadata": {
+                            "description": "Application Gateway Subnet [6]"
+                        }
+                    }
+                ]
+
+            }
+        }
+
+    }
+}

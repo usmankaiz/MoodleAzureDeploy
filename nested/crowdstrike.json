@@ -1,0 +1,30 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"vmName": {
+			"type": "String",
+			"defaultValue": "CrowdStike"
+		}
+	},
+	"resources": [
+		{
+			"type": "Microsoft.Compute/virtualMachines/extensions",
+			"apiVersion": "2015-06-15",
+			"name": "[concat(parameters('vmName'),'/CrowdStirkeScript')]",
+			"location": "[parameters('location')]",
+			"properties": {
+				"publisher": "Microsoft.Azure.Extensions",
+				"type": "CustomScript",
+				"typeHandlerVersion": "2.0",
+				"autoUpgradeMinorVersion": true,
+				"settings": {
+					"fileUris": "[parameters('moodleCommom').crowdStrikeFileName]"
+				},
+				"protectedSettings": {
+					"commandToExecute": "[parameters('moodleCommon').crowdStikeInstallCommand]"
+				}
+			}
+		}
+	]
+}
