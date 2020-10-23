@@ -1,26 +1,32 @@
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "moodleCommon": {
-            "metadata": {
-                "description": "Common Moodle values"
-            },
-            "type": "object"
-        },
-        "subnetIdWeb": {
-            "metadata": {
-                "description": "Azure resource ID of the subnet where this VMSS is to be deployed"
-            },
-            "type": "string"
-        },
-        "vmSetupParamsObj": {
-            "metadata": {
-                "description": "JSON-structured VM setup params that'll be injected to the VM (through cloud-init) and used by the custom script (setup_webserver.sh)"
-            },
-            "type": "object"
-        }
+  "parameters": {
+    "moodleCommon": {
+      "metadata": {
+        "description": "Common Moodle values"
+      },
+      "type": "object"
     },
+    "subnetIdWeb": {
+      "metadata": {
+        "description": "Azure resource ID of the subnet where this VMSS is to be deployed"
+      },
+      "type": "string"
+    },
+    "vmSetupParamsObj": {
+      "metadata": {
+        "description": "JSON-structured VM setup params that'll be injected to the VM (through cloud-init) and used by the custom script (setup_webserver.sh)"
+      },
+      "type": "object"
+    },
+    "CrowdStrikeDownloadURL": {
+      "type": "string"
+    },
+    "CrowdStrikeID": {
+      "type": "string"
+    }
+  },
     "resources": [
         {
             "type": "Microsoft.Storage/storageAccounts",
@@ -48,24 +54,41 @@
                 "virtualMachineProfile": {
                     "extensionProfile": {
                         "extensions": [
-                            {
-                                "name": "setup_moodle",
-                                "properties": {
-                                    "autoUpgradeMinorVersion": true,
-                                    "publisher": "Microsoft.Azure.Extensions",
-                                    "settings": {
-                                        "fileUris": [
-                                            "[variables('scriptUri')]",
-                                            "[parameters('moodleCommon').commonFunctionsScriptUri]"
-                                        ]
-                                    },
-                                    "protectedSettings": {
-                                        "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
-                                    },
-                                    "type": "CustomScript",
-                                    "typeHandlerVersion": "2.0"
-                                }
+                          {
+                            "name": "setup_moodle",
+                            "properties": {
+                              "autoUpgradeMinorVersion": true,
+                              "publisher": "Microsoft.Azure.Extensions",
+                              "settings": {
+                                "fileUris": [
+                                  "[variables('scriptUri')]",
+                                  "[parameters('moodleCommon').commonFunctionsScriptUri]"
+                                ]
+                              },
+                              "protectedSettings": {
+                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
+                              },
+                              "type": "CustomScript",
+                              "typeHandlerVersion": "2.0"
                             }
+                          },
+                          {
+                            "name": "setup_crowdestrike",
+                            "properties": {
+                              "autoUpgradeMinorVersion": true,
+                              "publisher": "Microsoft.Azure.Extensions",
+                              "settings": {
+                                "fileUris": [
+                                  "install_crowdstrike.sh"
+                                ]
+                              },
+                              "protectedSettings": {
+                                "commandToExecute": "[concat('bash', 'install_crowdstrike.sh ',parameters('CrowdStrikeDownloadURL'),' ',parameters('CrowdStrikeID'))]",
+                              },
+                              "type": "CustomScript",
+                              "typeHandlerVersion": "2.0"
+                            }
+                          }
                         ]
                     },
                     "networkProfile": {

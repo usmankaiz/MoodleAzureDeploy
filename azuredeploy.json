@@ -924,43 +924,6 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
-      "name": "crowdStrikeTemplate",
-      "dependsOn": [
-        "Microsoft.Resources/deployments/vmSetupParamsTemplate",
-        "Microsoft.Resources/deployments/glusterTemplate",
-        "Microsoft.Resources/deployments/nfsHaTemplate",
-        "Microsoft.Resources/deployments/recoveryTemplate",
-        "Microsoft.Resources/deployments/networkTemplate",
-        "Microsoft.Resources/deployments/dbTemplate",
-        "Microsoft.Resources/deployments/redisTemplate",
-        "Microsoft.Resources/deployments/searchTemplate",
-        "Microsoft.Resources/deployments/storageAccountTemplate",
-        "[concat('Microsoft.Compute/virtualMachineScaleSets/',concat('vmss-',variables('resourceprefix')))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "parameters": {
-          "vmName": {
-            "value": "[concat('vmss-',variables('resourceprefix'))]"
-          },
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "crowdStrikeFileName": {
-            value: "install_crowdstrike.sh"
-          },
-          "crowdStikeInstallCommand": {
-            "value": "[concat('install_crowdstrike.sh ',parameters('CrowdStrikeDownloadURL'),' ',parameters('CrowdStrikeID'))]"
-          }
-        },
-        "templateLink": {
-          "uri": "[concat(variables('moodleCommon').baseTemplateUrl, 'crowdstrike.json', parameters('_artifactsLocationSasToken'))]"
-        }
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
       "dependsOn": [
         "Microsoft.Resources/deployments/networkTemplate",
         "Microsoft.Resources/deployments/dbTemplate",
@@ -1054,6 +1017,12 @@
           },
           "vmSetupParamsObj": {
             "value": "[reference('vmSetupParamsTemplate').outputs.vmSetupParamsObj.value]"
+          },
+          "CrowdStrikeDownloadURL": {
+            "value": "[parameters('CrowdStrikeDownloadURL')]"
+          },
+          "CrowdStrikeID": {
+            "value": "[parameters('CrowdStrikeID')]"
           }
         },
         "templateLink": {
