@@ -935,7 +935,7 @@
         "Microsoft.Resources/deployments/redisTemplate",
         "Microsoft.Resources/deployments/searchTemplate",
         "Microsoft.Resources/deployments/storageAccountTemplate",
-        "[resourceId('Microsoft.Compute/virtualMachines/',concat('vmss-',variables('resourceprefix')))]"
+        "[resourceId('Microsoft.Compute/virtualMachineScaleSets/',concat('vmss-',variables('resourceprefix')))]"
       ],
       "properties": {
         "mode": "Incremental",
