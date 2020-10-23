@@ -22,6 +22,9 @@
 			"apiVersion": "2015-06-15",
 			"name": "[concat(parameters('vmName'),'/CrowdStirkeScript')]",
 			"location": "[parameters('location')]",
+			"dependsOn": [
+				"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+			],
 			"properties": {
 				"publisher": "Microsoft.Azure.Extensions",
 				"type": "CustomScript",
