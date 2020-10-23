@@ -12,7 +12,7 @@
 			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"apiVersion": "2015-06-15",
 			"name": "[concat(parameters('vmName'),'/CrowdStirkeScript')]",
-			"location": [ "parameters('moodleCommon').location" ]",
+			"location": "[parameters('moodleCommon').location]",
 			"properties": {
 				"publisher": "Microsoft.Azure.Extensions",
 				"type": "CustomScript",
