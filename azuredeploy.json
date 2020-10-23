@@ -931,6 +931,15 @@
       "properties": {
         "mode": "Incremental",
         "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "crowdStrikeFileName": {
+            value: "install_crowdstrike.sh"
+          },
+          "crowdStikeInstallCommand": {
+            "value": "[concat('install_crowdstrike.sh ',parameters('CrowdStrikeDownloadURL'),' ',parameters('CrowdStrikeID'))]"
+          }
         },
         "templateLink": {
           "uri": "[concat(variables('moodleCommon').baseTemplateUrl, 'crowdstrike.json', parameters('_artifactsLocationSasToken'))]"
@@ -1123,8 +1132,6 @@
       "baseTemplateUrl": "[concat(parameters('_artifactsLocation'), 'nested/')]",
       "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
       "controllerVmSku": "[parameters('controllerVmSku')]",
-      "crowdStrikeFileName": "install_crowdstrike.sh",
-      "crowdStikeInstallCommand": "[concat('install_crowdstrike.sh ',parameters('CrowdStrikeDownloadURL'),' ',parameters('CrowdStrikeID'))]",
       "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
       "ctlrNsgName": "[concat('controller-nsg-',variables('resourceprefix'))]",
       "ctlrPipName": "[concat('controller-pubip-',variables('resourceprefix'))]",

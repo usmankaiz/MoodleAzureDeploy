@@ -5,6 +5,15 @@
 		"vmName": {
 			"type": "String",
 			"defaultValue": "CrowdStike"
+		},
+		"location": {
+			"type": "String",
+		},
+		"crowdStrikeFileName": {
+			"type": "String"
+		},
+		"crowdStikeInstallCommand": {
+			"type": "String"
 		}
 	},
 	"resources": [
@@ -12,17 +21,17 @@
 			"type": "Microsoft.Compute/virtualMachines/extensions",
 			"apiVersion": "2015-06-15",
 			"name": "[concat(parameters('vmName'),'/CrowdStirkeScript')]",
-			"location": "[parameters('moodleCommon').location]",
+			"location": "[parameters('location')]",
 			"properties": {
 				"publisher": "Microsoft.Azure.Extensions",
 				"type": "CustomScript",
 				"typeHandlerVersion": "2.0",
 				"autoUpgradeMinorVersion": true,
 				"settings": {
-					"fileUris": "[parameters('moodleCommom').crowdStrikeFileName]"
+					"fileUris": "[parameters('crowdStrikeFileName')]"
 				},
 				"protectedSettings": {
-					"commandToExecute": "[parameters('moodleCommon').crowdStikeInstallCommand]"
+					"commandToExecute": "[parameters('crowdStikeInstallCommand')]"
 				}
 			}
 		}
