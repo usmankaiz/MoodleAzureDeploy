@@ -5,7 +5,7 @@
     "sshPublicKey": { "value": "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA1QYk2hZ8UOG7rjkPlmKuzC6+FroVnTQNUux/lgo3ClaB9VjJ/QnIk5i+ZK01rItRN0XtJze55F9gN/5YTgZOgtRnt/669ALf3wnt5c7XuUaufO8I5oDwUWhosWsg47fDfavn8aEaCSRzjT24QuSdvIUTX0ZX7KPzcMS36rbIikpg3wwiBYTPK6chZuRRCatwY0VebeTUmBnRDdqwPt048CbAp5vwJs7KFdGgqRg3fzqAgcVARelGvYD1AGq09/S+qbUU4iH0SCUQzCG8CDT5zzWphRIGeCAFjnSqMqg52VRKjxlqg0hdWeR179zbTanztMvfHl3YoC+mzHTMp9occw== rsa-key-20201023" },
     "fileServerDiskCount": { "value": 2 },
     "fileServerDiskSize": { "value": 32 },
-    "CrowdStrikeDownloadURL": { "value": "https://outside-help.qlik.com/crowdstrike/falcon-sensor_5.43.0-10801_amd64.deb.gz" },
-    "CrowdStrikeID": { "value": "0ED4203A773044428975D1600DEC4FDF-41" }
+    "crowdStrikeDownloadURL": { "value": "https://outside-help.qlik.com/crowdstrike/falcon-sensor_5.43.0-10801_amd64.deb.gz" },
+    "crowdStrikeID": { "value": "0ED4203A773044428975D1600DEC4FDF-41" }
   }
 }

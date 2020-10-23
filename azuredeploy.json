@@ -654,14 +654,14 @@
         "description": "Azure Location for all resources."
       }
     },
-    "CrowdStrikeDownloadURL": {
+    "crowdStrikeDownloadURL": {
       "type": "string",
       "defaultValue": null,
       "metadata": {
         "description":  "Set Crowdstrike .deb file URL"
       }
     },
-    "CrowdStrikeID": {
+    "crowdStrikeID": {
       "type": "string",
       "defaultValue": null,
       "metadata": {
@@ -1018,11 +1018,11 @@
           "vmSetupParamsObj": {
             "value": "[reference('vmSetupParamsTemplate').outputs.vmSetupParamsObj.value]"
           },
-          "CrowdStrikeDownloadURL": {
-            "value": "[parameters('CrowdStrikeDownloadURL')]"
+          "crowdStrikeDownloadURL": {
+            "value": "[parameters('crowdStrikeDownloadURL')]"
           },
-          "CrowdStrikeID": {
-            "value": "[parameters('CrowdStrikeID')]"
+          "crowdStrikeID": {
+            "value": "[parameters('crowdStrikeID')]"
           }
         },
         "templateLink": {
@@ -1112,6 +1112,7 @@
       "azureSearchSku": "[parameters('azureSearchSku')]",
       "baseTemplateUrl": "[concat(parameters('_artifactsLocation'), 'nested/')]",
       "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
+      "crowdStrikeScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/install_crowdstrike.sh',parameters('_artifactsLocationSasToken'))]",
       "controllerVmSku": "[parameters('controllerVmSku')]",
       "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
       "ctlrNsgName": "[concat('controller-nsg-',variables('resourceprefix'))]",

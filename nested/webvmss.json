@@ -20,10 +20,10 @@
       },
       "type": "object"
     },
-    "CrowdStrikeDownloadURL": {
+    "crowdStrikeDownloadURL": {
       "type": "string"
     },
-    "CrowdStrikeID": {
+    "crowdStrikeID": {
       "type": "string"
     }
   },
@@ -63,11 +63,11 @@
                                 "fileUris": [
                                   "[variables('scriptUri')]",
                                   "[parameters('moodleCommon').commonFunctionsScriptUri]",
-                                  "install_crowdstrike.sh"
+                                  "[parameters('moodleCommon').crowdStrikeScriptUri]"
                                 ]
                               },
                               "protectedSettings": {
-                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('CrowdStrikeDownloadURL'), ' ', parameters('CrowdStrikeID'), ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
+                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('crowdStrikeDownloadURL'), ' ', parameters('crowdStrikeID'), ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
                               },
                               "type": "CustomScript",
                               "typeHandlerVersion": "2.0"
