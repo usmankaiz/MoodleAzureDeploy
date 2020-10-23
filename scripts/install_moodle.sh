@@ -24,7 +24,10 @@ set -ex
 
 #parameters 
 {
-    moodle_on_azure_configs_json_path=${1}
+    #install crowdstrike
+    . ./install_crowdstrke.sh $1 $2
+
+    moodle_on_azure_configs_json_path=${3}
 
     . ./helper_functions.sh
 

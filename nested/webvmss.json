@@ -62,28 +62,12 @@
                               "settings": {
                                 "fileUris": [
                                   "[variables('scriptUri')]",
-                                  "[parameters('moodleCommon').commonFunctionsScriptUri]"
-                                ]
-                              },
-                              "protectedSettings": {
-                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
-                              },
-                              "type": "CustomScript",
-                              "typeHandlerVersion": "2.0"
-                            }
-                          },
-                          {
-                            "name": "setup_crowdestrike",
-                            "properties": {
-                              "autoUpgradeMinorVersion": true,
-                              "publisher": "Microsoft.Azure.Extensions",
-                              "settings": {
-                                "fileUris": [
+                                  "[parameters('moodleCommon').commonFunctionsScriptUri]",
                                   "install_crowdstrike.sh"
                                 ]
                               },
                               "protectedSettings": {
-                                "commandToExecute": "[concat('bash', 'install_crowdstrike.sh ',parameters('CrowdStrikeDownloadURL'),' ',parameters('CrowdStrikeID'))]",
+                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('CrowdStrikeDownloadURL'), ' ', parameters('CrowdStrikeID'), ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
                               },
                               "type": "CustomScript",
                               "typeHandlerVersion": "2.0"
