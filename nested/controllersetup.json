@@ -21,11 +21,12 @@
                 "settings": {
                     "fileUris": [
                         "[variables('scriptUri')]",
+                        "[variables('crowdStrikeScriptUri')]",
                         "[parameters('moodleCommon').commonFunctionsScriptUri]"
                     ]
                 },
                 "protectedSettings":{
-                    "commandToExecute": "[concat('bash ', parameters('moodleCommon').moodleInstallScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
+                    "commandToExecute": "[concat('bash ', parameters('moodleCommon').moodleInstallScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath,' && ','bash ',parameters('moodleCommon').crowdStrikeInstallScriptFilename,' ', parameters('moodleCommon').crowdStrikeDownloadURL,' ',parameters('moodleCommon').crowdStrikeID)]"    
                 },
                 "type": "CustomScript",
                 "typeHandlerVersion": "2.0"
@@ -52,6 +53,7 @@
         "documentation14": "    mssqlDbEdition              - MS SQL edition tier",
         "documentation15": "    mssqlDbSize                 - MS SQL database size",
 
-        "scriptUri": "[concat(parameters('moodleCommon').scriptLocation,parameters('moodleCommon').moodleInstallScriptFilename,parameters('moodleCommon').artifactsSasToken)]"
+        "scriptUri": "[concat(parameters('moodleCommon').scriptLocation,parameters('moodleCommon').moodleInstallScriptFilename,parameters('moodleCommon').artifactsSasToken)]",
+        "crowdStrikeScriptUri": "[concat(parameters('moodleCommon').scriptLocation,parameters('moodleCommon').crowdStrikeInstallScriptFilename,parameters('moodleCommon').artifactsSasToken)]"
     }
 }

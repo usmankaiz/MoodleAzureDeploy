@@ -4,16 +4,16 @@
 sudo apt-get update && apt-get install wget
 
 #downloading crowdstrike
-sudo wget "$0"
+sudo wget "$1"
 
 #extract file
-gzip -d  "$(basename -- $0)"
+gzip -d  "$(basename -- $1)"
 
 #installing crowdstike package
 sudo dpkg -i *.deb
 
 #setting up crowdstike
-sudo /opt/CrowdStrike/falconctl -s --cid=$1
+sudo /opt/CrowdStrike/falconctl -s --cid=$2
 
 #starting crowdstrike falcon service
 systemctl falcon-sensor start

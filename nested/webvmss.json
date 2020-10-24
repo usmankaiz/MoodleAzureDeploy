@@ -62,12 +62,11 @@
                               "settings": {
                                 "fileUris": [
                                   "[variables('scriptUri')]",
-                                  "[parameters('moodleCommon').commonFunctionsScriptUri]",
-                                  "[parameters('moodleCommon').crowdStrikeScriptUri]"
+                                  "[parameters('moodleCommon').commonFunctionsScriptUri]"
                                 ]
                               },
                               "protectedSettings": {
-                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('crowdStrikeDownloadURL'), ' ', parameters('crowdStrikeID'), ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
+                                "commandToExecute": "[concat('bash ', parameters('moodleCommon').webServerSetupScriptFilename, ' ', parameters('moodleCommon').moodleOnAzureConfigsJsonPath)]"
                               },
                               "type": "CustomScript",
                               "typeHandlerVersion": "2.0"

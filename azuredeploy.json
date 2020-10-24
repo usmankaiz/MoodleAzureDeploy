@@ -1017,12 +1017,6 @@
           },
           "vmSetupParamsObj": {
             "value": "[reference('vmSetupParamsTemplate').outputs.vmSetupParamsObj.value]"
-          },
-          "crowdStrikeDownloadURL": {
-            "value": "[parameters('crowdStrikeDownloadURL')]"
-          },
-          "crowdStrikeID": {
-            "value": "[parameters('crowdStrikeID')]"
           }
         },
         "templateLink": {
@@ -1112,6 +1106,9 @@
       "azureSearchSku": "[parameters('azureSearchSku')]",
       "baseTemplateUrl": "[concat(parameters('_artifactsLocation'), 'nested/')]",
       "commonFunctionsScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/helper_functions.sh',parameters('_artifactsLocationSasToken'))]",
+      "crowdStrikeDownloadURL":  "[parameters('crowdStrikeDownloadURL')]",
+      "crowdStrikeID": "[parameters('crowdStrikeID')]",
+      "crowdStrikeInstallScriptFilename": "install_crowdstrike.sh",
       "crowdStrikeScriptUri": "[concat(parameters('_artifactsLocation'),'scripts/install_crowdstrike.sh',parameters('_artifactsLocationSasToken'))]",
       "controllerVmSku": "[parameters('controllerVmSku')]",
       "ctlrNicName": "[concat('controller-vm-nic-',variables('resourceprefix'))]",
